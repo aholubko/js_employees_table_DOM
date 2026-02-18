@@ -274,14 +274,18 @@ function employeesTable() {
     const nameSubmit = nameInput.value.trim();
     const position = positionInput.value.trim();
     const office = officeSelect.value;
-    const age = Number(ageInput.value);
-    const salary = Number(salaryInput.value);
 
-    if (!nameSubmit || !position || !office) {
+    const ageRaw = ageInput.value.trim();
+    const salaryRaw = salaryInput.value.trim();
+
+    if (!nameSubmit || !position || !office || !ageRaw || !salaryRaw) {
       pushNotification('Error', 'All fields are required', 'error');
 
       return;
     }
+
+    const age = Number(ageRaw);
+    const salary = Number(salaryRaw);
 
     if (!Number.isFinite(age) || !Number.isFinite(salary)) {
       pushNotification('Error', 'All fields are required', 'error');
